@@ -1,8 +1,8 @@
 import { MESES, MESES_LARGOS } from '../model/calendario.ts';
-import { mesCritico } from '../model/red.ts';
+import { mesCritico, personasPorPerfil } from '../model/red.ts';
 import type { ResultadoSede } from '../model/red.ts';
 import { usePortal } from '../store/portal.ts';
-import { useEscenario, useResultadosRed } from '../store/selectores.ts';
+import { useEscenario, useResultadosRed, useTerritorio } from '../store/selectores.ts';
 import { COLOR_ESTADO, NOMBRE_ESTADO, Pastilla, conSigno, millones, n0, n1 } from '../ui/formato.tsx';
 
 interface Alerta {
@@ -16,6 +16,7 @@ export default function Panorama() {
   const s = usePortal();
   const red = useResultadosRed();
   const esc = useEscenario();
+  const celdas = useTerritorio();
   const mesSel = s.mes;
   const mesDe = (r: ResultadoSede) => mesSel ?? mesCritico(r);
 
@@ -60,7 +61,9 @@ export default function Panorama() {
   });
 
   const suma = (f: (r: ResultadoSede) => number) => red.reduce((a, r) => a + f(r), 0);
-  const personas = suma((r) => Object.values(r.personasPorCohorte).reduce((a, b) => a + b, 0));
+  const perfiles = personasPorPerfil(s.catalogo, celdas).perfiles;
+  const personas = perfiles.reduce((a, p) => a + p.n, 0);
+  const multimorbilidad = perfiles.filter((p) => p.cohortes.length > 1).reduce((a, p) => a + p.n, 0);
   const hosp = suma((r) => r.hospEvitadas);
   const urg = suma((r) => r.urgEvitadas);
   const costo = suma((r) => r.costoSQ - r.costoEsc);
@@ -162,6 +165,7 @@ export default function Panorama() {
           </div>
           <dl className="pares">
             <div><dt>Personas en cohortes</dt><dd>{n0(personas)}</dd></div>
+            <div><dt>Con dos o más condiciones</dt><dd>{n0(multimorbilidad)}</dd></div>
             {esc.id === 'sq' ? (
               <>
                 <div><dt>Hospitalizaciones de las cohortes</dt><dd>{n0(suma((r) => r.volumenSQ.hospitalizaciones.reduce((a, b) => a + b, 0)))}</dd></div>

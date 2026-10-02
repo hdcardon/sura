@@ -141,8 +141,8 @@ button, input { font: inherit; color: inherit; }
 .tabla tr.fila-sel td { background: var(--acento-suave); }
 .tabla tbody tr { cursor: default; }
 .comparativo th.actual, .comparativo td.actual { background: var(--acento-suave); }
-.comparativo td:first-child { min-width: 220px; }
-.comparativo th { white-space: normal; min-width: 110px; }
+.comparativo td:first-child { min-width: 190px; }
+.comparativo th, .tabla.comparativo th.d { white-space: normal; min-width: 96px; vertical-align: bottom; }
 .punto { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 8px; vertical-align: 0; }
 .pares { display: grid; gap: 0; margin: 0; }
 .pares div { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-bottom: 1px solid var(--linea); font-size: 0.86rem; }
@@ -155,7 +155,7 @@ button, input { font: inherit; color: inherit; }
 .etiqueta-estado { font-size: 0.74rem; padding: 2px 8px; border-radius: 999px; background: var(--superficie-2); color: var(--tinta-2); border: 1px solid var(--linea); white-space: nowrap; }
 
 /* Panorama */
-.tarjetas-sede { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
+.tarjetas-sede { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
 .tarjeta-sede { text-align: left; background: var(--superficie); border: 1px solid var(--linea); border-radius: 10px; padding: 14px 16px; cursor: pointer; display: grid; gap: 8px; box-shadow: var(--sombra); }
 .tarjeta-sede:hover { border-color: var(--acento); }
 .ts-cabeza { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
@@ -231,8 +231,8 @@ button, input { font: inherit; color: inherit; }
 .alerta-caja { font-size: 0.78rem; border: 1px solid #d99a22; background: color-mix(in srgb, #d99a22 10%, var(--superficie)); border-radius: 6px; padding: 8px 10px; }
 
 /* Escenarios */
-.rejilla-escenarios { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 18px; align-items: start; }
-@media (max-width: 1150px) { .rejilla-escenarios { grid-template-columns: 1fr; } }
+.rejilla-escenarios { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.5fr); gap: 18px; align-items: start; }
+@media (max-width: 1250px) { .rejilla-escenarios { grid-template-columns: 1fr; } }
 .formulario { border: 0; padding: 0; margin: 0; display: grid; gap: 16px; min-width: 0; }
 .formulario[disabled] { opacity: 0.6; }
 .campo { display: grid; gap: 5px; font-size: 0.82rem; font-weight: 600; }
