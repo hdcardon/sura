@@ -154,7 +154,7 @@ button, input { font: inherit; color: inherit; }
 .pastilla { display: inline-block; font-size: 0.72rem; font-weight: 700; color: #0b1118; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
 .etiqueta-estado { font-size: 0.74rem; padding: 2px 8px; border-radius: 999px; background: var(--superficie-2); color: var(--tinta-2); border: 1px solid var(--linea); white-space: nowrap; }
 
-/* Panorama */
+/* Vista general */
 .tarjetas-sede { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
 .tarjeta-sede { text-align: left; background: var(--superficie); border: 1px solid var(--linea); border-radius: 10px; padding: 14px 16px; cursor: pointer; display: grid; gap: 8px; box-shadow: var(--sombra); }
 .tarjeta-sede:hover { border-color: var(--acento); }

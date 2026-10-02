@@ -34,7 +34,7 @@ export default function MatrizUnidades({ cohorte, n, hoy, sq, esc, nombreEsc }: 
     <div className="unidades">
       <div className="conmutador" role="group" aria-label="Momento de la cohorte">
         <button type="button" aria-pressed={vista === 'hoy'} onClick={() => setVista('hoy')}>Enero</button>
-        <button type="button" aria-pressed={vista === 'sq'} onClick={() => setVista('sq')}>Diciembre, statu quo</button>
+        <button type="button" aria-pressed={vista === 'sq'} onClick={() => setVista('sq')}>Diciembre, regular</button>
         <button type="button" aria-pressed={vista === 'esc'} onClick={() => setVista('esc')}>Diciembre, {nombreEsc.toLowerCase()}</button>
       </div>
       <svg viewBox={`0 0 ${columnas * paso} ${filas * paso}`} width="100%" role="img" aria-label={`Matriz de ${total} puntos, ${porPunto} personas por punto`}>

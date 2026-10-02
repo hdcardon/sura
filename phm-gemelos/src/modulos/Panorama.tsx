@@ -160,7 +160,7 @@ export default function Panorama() {
 
         <section className="panel" aria-labelledby="resumen-t">
           <div className="panel-cabeza">
-            <h2 id="resumen-t">{esc.id === 'sq' ? 'Cohortes crónicas en el statu quo' : 'Escenario frente al statu quo'}</h2>
+            <h2 id="resumen-t">{esc.id === 'sq' ? 'Cohortes crónicas en el escenario regular' : 'Escenario frente al regular'}</h2>
             <p>Red completa durante 2027.{esc.id === 'sq' ? ' Seleccione otro escenario para ver diferencias.' : ''}</p>
           </div>
           <dl className="pares">

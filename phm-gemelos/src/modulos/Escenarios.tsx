@@ -26,7 +26,7 @@ export default function Escenarios() {
   const filas: { nombre: string; f: (red: ResultadoSede[]) => string }[] = [
     { nombre: 'Hospitalizaciones CSCA evitadas', f: (red) => conSigno(suma(red, (r) => r.hospEvitadas), n0) },
     { nombre: 'Urgencias evitadas', f: (red) => conSigno(suma(red, (r) => r.urgEvitadas), n0) },
-    { nombre: 'Costo médico de las cohortes frente al statu quo', f: (red) => conSigno(-suma(red, (r) => r.costoSQ - r.costoEsc), millones) },
+    { nombre: 'Costo médico de las cohortes frente al escenario regular', f: (red) => conSigno(-suma(red, (r) => r.costoSQ - r.costoEsc), millones) },
     { nombre: 'Meses-sede con alguna zona saturada', f: (red) => `${suma(red, (r) => r.meses.filter((m) => m.peorEstado === 'saturada').length)} de ${red.length * 12}` },
     { nombre: 'Oportunidad de cita P90 máxima', f: (red) => `${n1(Math.max(...red.flatMap((r) => r.meses.map((m) => m.zonas.consulta.oportunidad!.p90))))} días` },
     { nombre: 'Utilización máxima de consulta externa', f: (red) => pct(Math.max(...red.flatMap((r) => r.meses.map((m) => m.zonas.consulta.utilizacion)))) },
@@ -52,7 +52,7 @@ export default function Escenarios() {
           <div className="panel-cabeza fila">
             <div>
               <h2 id="edit-t">Configuración del escenario</h2>
-              <p>{bloqueado ? 'El statu quo refleja la cobertura vigente y no se edita. Duplíquelo para crear una variante.' : 'Los cambios se aplican de inmediato en todos los módulos.'}</p>
+              <p>{bloqueado ? 'El escenario regular refleja la cobertura vigente y no se edita. Duplíquelo para crear una variante.' : 'Los cambios se aplican de inmediato en todos los módulos.'}</p>
             </div>
           </div>
           <div className="barra-modulo" style={{ marginBottom: 12 }}>
@@ -138,7 +138,7 @@ export default function Escenarios() {
           <div className="panel-cabeza fila">
             <div>
               <h2 id="comp-t">Comparación de escenarios en la red</h2>
-              <p>Cohortes crónicas durante 2027, frente al statu quo.</p>
+              <p>Cohortes crónicas durante 2027, frente al escenario regular.</p>
             </div>
             <Selector
               etiqueta="Comparar"

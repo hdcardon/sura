@@ -2,7 +2,7 @@
  "escenarios": [
   {
    "id": "sq",
-   "nombre": "Statu quo",
+   "nombre": "Regular",
    "hosp": 0,
    "urg": 0,
    "costo": 0,

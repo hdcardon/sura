@@ -5,7 +5,7 @@ const cob = (cat: Catalogo, f: (c: number) => number) =>
 
 export function escenariosBase(cat: Catalogo): Escenario[] {
   return [
-    { id: 'sq', nombre: 'Statu quo', bloqueado: true, cobertura: cob(cat, (c) => c), domicilio: false, virtual: false, medicosVirtuales: 0, recordatorios: false },
+    { id: 'sq', nombre: 'Regular', bloqueado: true, cobertura: cob(cat, (c) => c), domicilio: false, virtual: false, medicosVirtuales: 0, recordatorios: false },
     { id: 'ampliada', nombre: 'Gestión del riesgo ampliada', cobertura: cob(cat, (c) => c + 0.25), domicilio: false, virtual: false, medicosVirtuales: 0, recordatorios: false },
     { id: 'canales', nombre: 'Gestión ampliada con canales', cobertura: cob(cat, (c) => c + 0.25), domicilio: true, virtual: true, medicosVirtuales: 2, recordatorios: true },
     { id: 'caida', nombre: 'Caída de la gestión', cobertura: cob(cat, (c) => c - 0.2), domicilio: false, virtual: false, medicosVirtuales: 0, recordatorios: false },

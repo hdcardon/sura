@@ -33,7 +33,7 @@ export interface Cohorte {
   estacionalidad: Mes12; // para no programadas, urgencias y hospitalizaciones (media 1)
   fraccionCSCA: number; // hospitalizaciones por condiciones sensibles al cuidado ambulatorio
   efectoResidual: Partial<Record<TipoId, Rango>>; // efecto intraestrato a cobertura plena
-  coberturaActual: number; // cobertura vigente del programa (statu quo)
+  coberturaActual: number; // cobertura vigente del programa (escenario regular)
   virtual: { controles: number; noProgramadas: number; fuga: number }; // resolubles por telemedicina y fuga a presencial
   indicadorControl: string; // cómo se reporta el estrato controlado
 }
@@ -55,7 +55,7 @@ export interface Zona {
   servicioMin: number; // minutos por atención (visitas por equipo al día en domiciliaria)
   productividad: number; // fracción de la jornada en atención directa
   baseDias: BaseDias;
-  demandaObservada: number; // atenciones efectivas por día en el statu quo (media anual)
+  demandaObservada: number; // atenciones efectivas por día en el escenario regular (media anual)
   estacionalidad: Mes12;
   meta: { esperaMin: number; pMax: number }; // espontáneas: P(W > esperaMin) <= pMax
   perfilHorario?: number[]; // 24 valores, suma 1

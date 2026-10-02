@@ -20,7 +20,7 @@ const tooltip = {
 export default function Cohortes() {
   const s = usePortal();
   const escGlobal = useEscenario();
-  // El modelo poblacional siempre compara contra el statu quo; si el escenario activo es el statu quo, usa la gestión ampliada.
+  // El modelo poblacional siempre compara contra el escenario regular; si el escenario activo es el regular, usa la gestión ampliada.
   const esc = escGlobal.id !== 'sq' ? escGlobal : s.escenarios.find((e) => e.id === 'ampliada') ?? s.escenarios.find((e) => e.id !== 'sq') ?? escGlobal;
   const celdas = useTerritorio();
   const cat = s.catalogo;
@@ -52,7 +52,7 @@ export default function Cohortes() {
       <div className="barra-modulo">
         <Selector etiqueta="Cohorte" valor={co.id} opciones={opcionesCohorte} onCambio={(v) => s.set({ cohorteId: v })} ancho={300} buscar />
         <Selector
-          etiqueta="Comparar el statu quo con"
+          etiqueta="Comparar el escenario regular con"
           valor={esc.id}
           opciones={s.escenarios.filter((e) => e.id !== 'sq').map((e) => ({ valor: e.id, etiqueta: e.nombre }))}
           onCambio={(v) => s.set({ escenarioId: v })}
@@ -80,7 +80,7 @@ export default function Cohortes() {
           <dt>{co.estratos[0].nombre} ({co.indicadorControl})</dt>
           <dd>{pct(controladoDicEsc)}</dd>
           <small>
-            Hoy {pct(controladoHoy)}; en diciembre con statu quo {pct(controladoDicSQ)}
+            Hoy {pct(controladoHoy)}; en diciembre con el escenario regular {pct(controladoDicSQ)}
           </small>
         </div>
         <div className="kpi">
@@ -116,7 +116,7 @@ export default function Cohortes() {
             </div>
             <div className="conmutador" role="group" aria-label="Escenario de las transiciones">
               <button type="button" aria-pressed={vista === 'sq'} onClick={() => setVista('sq')}>
-                Statu quo
+                Regular
               </button>
               <button type="button" aria-pressed={vista === 'esc'} onClick={() => setVista('esc')}>
                 {esc.nombre}
@@ -132,7 +132,7 @@ export default function Cohortes() {
           <div className="panel-cabeza fila">
             <div>
               <h2 id="proy-t">Proyección mensual de atenciones</h2>
-              <p>Escenario con banda P10–P90 de 200 simulaciones y statu quo como referencia.</p>
+              <p>Escenario con banda P10–P90 de 200 simulaciones y el escenario regular como referencia.</p>
             </div>
             <Selector
               etiqueta="Tipo de atención"
@@ -151,14 +151,14 @@ export default function Cohortes() {
                 <YAxis tick={{ fontSize: 11, fill: 'var(--tinta-3)' }} tickLine={false} axisLine={false} tickFormatter={(v) => n0(v)} width={52} />
                 <Tooltip {...tooltip} formatter={(v: number | number[]) => (Array.isArray(v) ? `${n0(v[0])} a ${n0(v[1])}` : n0(v))} />
                 <Area dataKey="banda" name="Banda P10–P90" stroke="none" fill="var(--acento)" fillOpacity={0.16} isAnimationActive={false} />
-                <Line dataKey="sq" name="Statu quo" stroke="var(--tinta-3)" strokeDasharray="5 4" strokeWidth={1.8} dot={false} isAnimationActive={false} />
+                <Line dataKey="sq" name="Regular" stroke="var(--tinta-3)" strokeDasharray="5 4" strokeWidth={1.8} dot={false} isAnimationActive={false} />
                 <Line dataKey="esc" name={esc.nombre} stroke="var(--acento)" strokeWidth={2.4} dot={false} isAnimationActive={false} />
               </ComposedChart>
             </ResponsiveContainer>
           </div>
           <div className="leyenda">
             <span><i style={{ background: 'var(--acento)' }} />{esc.nombre}</span>
-            <span><i className="punteada" style={{ color: 'var(--tinta-3)' }} />Statu quo</span>
+            <span><i className="punteada" style={{ color: 'var(--tinta-3)' }} />Regular</span>
             <span><i style={{ background: 'var(--acento)', opacity: 0.25, height: 8 }} />Banda P10–P90</span>
           </div>
         </section>
@@ -184,7 +184,7 @@ export default function Cohortes() {
                 <th>Estrato</th>
                 <th>Criterio clínico</th>
                 <th className="d">Hoy</th>
-                <th className="d">Dic., statu quo</th>
+                <th className="d">Dic., regular</th>
                 <th className="d">Dic., escenario</th>
                 <th className="d">Hospitalización relativa</th>
               </tr>

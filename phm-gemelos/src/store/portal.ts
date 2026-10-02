@@ -5,7 +5,7 @@ import type { Catalogo, Cohorte, Escenario, Zona } from '../data/tipos.ts';
 
 export type ModuloId = 'panorama' | 'cohortes' | 'territorio' | 'sede' | 'escenarios' | 'configuracion';
 export const MODULOS: { id: ModuloId; nombre: string; descripcion: string }[] = [
-  { id: 'panorama', nombre: 'Panorama', descripcion: 'Estado de la red por sede y mes' },
+  { id: 'panorama', nombre: 'Vista general', descripcion: 'Estado de la red por sede y mes' },
   { id: 'cohortes', nombre: 'Cohortes', descripcion: 'Modelo poblacional de demanda' },
   { id: 'territorio', nombre: 'Territorio', descripcion: 'Demanda y acceso por celda' },
   { id: 'sede', nombre: 'Sede', descripcion: 'Modelo de capacidad de la sede' },
@@ -13,7 +13,7 @@ export const MODULOS: { id: ModuloId; nombre: string; descripcion: string }[] = 
   { id: 'configuracion', nombre: 'Configuración', descripcion: 'Catálogos, fuentes y estado del modelo' },
 ];
 
-const CLAVE = 'portal-capacidad-cohortes-v1';
+const CLAVE = 'portal-capacidad-cohortes-v2';
 
 interface Persistido {
   catalogo: Catalogo;

@@ -100,7 +100,7 @@ function tasasPorPersona(cat: Catalogo, co: Cohorte, d: Dinamica, m: number, s: 
 }
 
 export interface TasasCohorte {
-  sq: SerieTipos; // por persona y mes, statu quo
+  sq: SerieTipos; // por persona y mes, escenario regular
   esc: SerieTipos; // por persona y mes, escenario (hospitalizaciones con efecto solo en la fracción CSCA)
   dinSQ: Dinamica;
   dinEsc: Dinamica;

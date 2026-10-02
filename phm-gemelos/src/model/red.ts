@@ -40,7 +40,7 @@ export interface ResultadoSede {
   meses: SedeMes[];
   personasPorCohorte: Record<string, number>;
   adultos: number;
-  volumenSQ: SerieTipos; // atenciones de las cohortes crónicas por mes, statu quo
+  volumenSQ: SerieTipos; // atenciones de las cohortes crónicas por mes, escenario regular
   volumenEsc: SerieTipos; // escenario, todos los canales
   domicilioMes: number[]; // visitas domiciliarias de las cohortes
   virtualMes: number[]; // atenciones virtuales de las cohortes
